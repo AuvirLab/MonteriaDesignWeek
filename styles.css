@@ -1,0 +1,164 @@
+:root{
+  --ink:#0a0a0a;
+  --paper:#ffffff;
+}
+
+@font-face {
+  font-family: 'Futura';
+  src: url('assets/fuentes/futura.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura Medium BT';
+  src: url('assets/fuentes/futura-medium-bt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  font-family: 'Futura Medium BT', 'Segoe UI', -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* ---------- HEADER ---------- */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 24px 48px;
+}
+.logo-placeholder{
+  height:34px;
+  display:flex; align-items:center;
+  position:relative;
+}
+.logo-placeholder img{
+  height:100%;
+  width:auto;
+  object-fit:contain;
+  transition: opacity 1s ease;
+  position:absolute;
+  top:0; left:0;
+}
+.logo-placeholder img.logo-hidden{
+  opacity:0;
+}
+.ig-icon{
+  width:28px; height:28px;
+  display:flex; align-items:center; justify-content:center;
+}
+.ig-icon img{ width:100%; height:100%; object-fit:contain; }
+
+/* ---------- HERO ---------- */
+.hero{
+  background: #000000;
+  color: #fff;
+  padding: 64px 48px 56px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap: 40px;
+  transition: background-color 1s ease, color 1s ease;
+  min-height: 420px;
+}
+.hero-text{ max-width: 640px; }
+.hero-text h1{
+  font-family: 'Futura', sans-serif;
+  font-size: clamp(56px, 8vw, 110px);
+  line-height: 0.95;
+  margin: 0 0 20px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+.hero-text h1 .thin{
+  font-family: 'Futura Medium BT', sans-serif;
+  font-weight: 400;
+  display:block;
+  white-space:nowrap;
+}
+.hero-text p{
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 520px;
+  opacity: 0.9;
+}
+
+.video-block{
+  flex-shrink:0;
+  display:flex; flex-direction:column; align-items:center;
+  gap:14px;
+}
+.video-placeholder{
+  width: 480px;
+  max-width: 45vw;
+  aspect-ratio: 16/10;
+  background:#000000;
+  color:#666;
+  display:flex; align-items:center; justify-content:center;
+  font-size:14px;
+  border-radius:0;
+  overflow:hidden;
+  position:relative;
+}
+.video-placeholder video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  top:0; left:0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.video-placeholder .video-label{
+  position:relative;
+  z-index:1;
+  pointer-events:none;
+}
+.category-label{
+  font-size: 22px;
+  font-weight: 400;
+  transition: color .3s ease;
+}
+
+/* ---------- CONVOCATORIA ---------- */
+.cta-section{
+  text-align:center;
+  padding: 64px 24px 88px;
+}
+.cta-section h2{
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 500;
+  margin: 0 0 28px;
+}
+.cta-btn{
+  display:inline-block;
+  padding: 14px 32px;
+  border: 1.5px solid var(--ink);
+  border-radius: 0;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration:none;
+  color: var(--ink);
+  background: transparent;
+  cursor:pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.cta-btn:hover{
+  background: var(--ink);
+  color:#fff;
+}
+
+@media (max-width: 760px){
+  header{ padding: 18px 20px; }
+  .hero{ flex-direction:column; padding: 40px 20px; }
+  .video-placeholder{ max-width: 100%; width:100%; }
+}

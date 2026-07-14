@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Montería Design Week</title>
+<link rel="icon" href="assets/iconos/favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="logo-placeholder">
+    <img id="logoA" src="assets/iconos/MDW_PRINCIPAL.png" alt="Montería Design Week">
+    <img id="logoB" src="assets/iconos/MDW_PRINCIPAL.png" alt="Montería Design Week" class="logo-hidden">
+  </div>
+  <a href="https://www.instagram.com/monteriadesignweek" target="_blank" class="ig-icon">
+    <img src="assets/iconos/instagram.png" alt="Instagram">
+  </a>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-text">
+    <h1>Montería<span class="thin">Design Week</span></h1>
+    <p>Es una iniciativa que nace para impulsar el talento joven de la ciudad, creando un espacio donde el diseño, el arte y la creatividad se convierten en herramientas de encuentro, aprendizaje y proyección.</p>
+  </div>
+    <div class="video-block">
+    <div class="video-placeholder" id="videoPlaceholder">
+      <video id="heroVideoA" muted loop playsinline preload="auto"></video>
+      <video id="heroVideoB" muted loop playsinline preload="auto"></video>
+      <span class="video-label">Video</span>
+    </div>
+    <div class="category-label" id="categoryLabel"></div>
+
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Convocatoria de proyectos</h2>
+  <a href="#" class="cta-btn">Inscríbete aquí</a>
+</section>
+
+<script>
+  const slides = [
+    { bg:"#000000", fg:"#ffffff", video:"assets/videos/video1_web.mp4", label:"", logo:"assets/iconos/MDW_PRINCIPAL.png" },
+    { bg:"#ffff00", fg:"#000000", video:"assets/videos/video2_web.mp4", label:"Artes", logo:"assets/iconos/MDW_ARTES.png" },
+    { bg:"#6599ff", fg:"#ffffff", video:"assets/videos/video3_web.mp4", label:"Diseño Audiovisual", logo:"assets/iconos/MDW_DISEÑO_AUDIOVISUAL.png" },
+    { bg:"#34cc67", fg:"#ffffff", video:"assets/videos/video4_web.mp4", label:"Diseño Gráfico", logo:"assets/iconos/MDW_DISEÑO_GRAFICO.png" },
+    { bg:"#ff6600", fg:"#ffffff", video:"assets/videos/video5_web.mp4", label:"Diseño Industrial", logo:"assets/iconos/MDW_DISEÑO_INDUSTRIAL.png" },
+    { bg:"#9900cc", fg:"#ffffff", video:"assets/videos/video6_web.mp4", label:"Diseño de Modas", logo:"assets/iconos/MDW_DISEÑO_MODAS.png" },
+    { bg:"#fe0000", fg:"#ffffff", video:"assets/videos/video7_web.mp4", label:"Arquitectura", logo:"assets/iconos/MDW_ARQUITECTURA.png" },
+  ];
+
+  const hero = document.getElementById('hero');
+  const labelEl = document.getElementById('categoryLabel');
+  const heroVideoA = document.getElementById('heroVideoA');
+  const heroVideoB = document.getElementById('heroVideoB');
+  const videoLabel = document.querySelector('.video-label');
+  const logoA = document.getElementById('logoA');
+  const logoB = document.getElementById('logoB');
+
+  let i = 0;
+  let activeLogo = logoA;
+  let hiddenLogo = logoB;
+  let activeVideo = heroVideoA;
+  let hiddenVideo = heroVideoB;
+  let firstRender = true;
+  let firstLogoRender = true;
+  const INTERVAL_MS = 10000;
+
+  function render(){
+    const s = slides[i];
+    hero.style.backgroundColor = s.bg;
+    hero.style.color = s.fg;
+    labelEl.textContent = s.label || 'Presenta 6 áreas';
+    labelEl.style.color = s.fg;
+
+    hiddenLogo.src = s.logo;
+    hiddenLogo.onload = function(){
+      if(firstLogoRender){
+        firstLogoRender = false;
+        hiddenLogo.style.transition = 'none';
+        hiddenLogo.classList.remove('logo-hidden');
+        activeLogo.classList.add('logo-hidden');
+        void hiddenLogo.offsetHeight;
+        hiddenLogo.style.transition = '';
+        const tmp = activeLogo;
+        activeLogo = hiddenLogo;
+        hiddenLogo = tmp;
+        return;
+      }
+      hiddenLogo.classList.remove('logo-hidden');
+      activeLogo.classList.add('logo-hidden');
+      const tmp = activeLogo;
+      activeLogo = hiddenLogo;
+      hiddenLogo = tmp;
+    };
+
+    hiddenVideo.src = s.video;
+    hiddenVideo.currentTime = 0;
+    hiddenVideo.onloadeddata = function(){
+      hiddenVideo.play().catch(()=>{});
+
+      if(firstRender){
+        firstRender = false;
+        hiddenVideo.style.transition = 'none';
+        hiddenVideo.style.opacity = '1';
+        void hiddenVideo.offsetHeight;
+        hiddenVideo.style.transition = '';
+        const tmp = activeVideo;
+        activeVideo = hiddenVideo;
+        hiddenVideo = tmp;
+        hiddenVideo.style.opacity = '0';
+        return;
+      }
+
+      hiddenVideo.style.opacity = '1';
+      activeVideo.style.opacity = '0';
+      setTimeout(function(){
+        activeVideo.pause();
+        const tmp = activeVideo;
+        activeVideo = hiddenVideo;
+        hiddenVideo = tmp;
+      }, 1000);
+    };
+
+    videoLabel.style.display = 'none';
+    i = (i + 1) % slides.length;
+  }
+
+  render();
+  setInterval(render, INTERVAL_MS);
+</script>
+
+</body>
+</html>
