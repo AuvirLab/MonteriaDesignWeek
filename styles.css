@@ -27,6 +27,7 @@ body{
   font-family: 'Futura Medium BT', 'Segoe UI', -apple-system, sans-serif;
   color: var(--ink);
   background: var(--paper);
+  overflow-x: hidden;
 }
 
 /* ---------- HEADER ---------- */
@@ -62,24 +63,39 @@ header{
 .hero{
   background: #000000;
   color: #fff;
-  padding: 64px 48px 56px;
+  padding: 64px 48px 0;
+  display:flex;
+  flex-direction:column;
+  transition: background-color 1s ease, color 1s ease;
+}
+.hero-content{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap: 40px;
-  transition: background-color 1s ease, color 1s ease;
-  min-height: 420px;
+  gap:40px;
+  padding-bottom:48px;
 }
 .hero-text{ max-width: 640px; }
 .hero-text h1{
   font-family: 'Futura', sans-serif;
   font-size: clamp(56px, 8vw, 110px);
-  line-height: 0.95;
+  line-height: 1.05;
   margin: 0 0 20px;
   font-weight: 900;
   letter-spacing: -1px;
 }
 .hero-text h1 .thin{
+  font-family: 'Futura Medium BT', sans-serif;
+  font-weight: 400;
+  display:block;
+  white-space:nowrap;
+}
+.hero-text h1 .cat-thin{
+  font-family: 'Futura', sans-serif;
+  display:block;
+  margin-bottom:16px;
+}
+.hero-text h1 .cat-medium{
   font-family: 'Futura Medium BT', sans-serif;
   font-weight: 400;
   display:block;
@@ -98,8 +114,8 @@ header{
   gap:14px;
 }
 .video-placeholder{
-  width: 480px;
-  max-width: 45vw;
+  width: 560px;
+  max-width: 55vw;
   aspect-ratio: 16/10;
   background:#000000;
   color:#666;
@@ -118,15 +134,32 @@ header{
   opacity: 0;
   transition: opacity 1s ease;
 }
-.video-placeholder .video-label{
-  position:relative;
-  z-index:1;
-  pointer-events:none;
-}
-.category-label{
-  font-size: 22px;
-  font-weight: 400;
+
+/* ---------- COLOR BAR ---------- */
+.color-bar-label{
+  text-align:center;
+  font-size:16px;
+  font-weight:400;
+  padding:8px 0 6px;
   transition: color .3s ease;
+}
+.color-bar{
+  display:flex;
+  height:20px;
+  width:calc(100% + 96px);
+  margin-left:-48px;
+  overflow:hidden;
+  cursor:pointer;
+}
+.color-swatch{
+  flex:1;
+  outline:0 solid transparent;
+  outline-offset:-3px;
+  transition:outline .2s ease;
+}
+.color-swatch.active{
+  outline:3px solid #fff;
+  outline-offset:-3px;
 }
 
 /* ---------- CONVOCATORIA ---------- */
@@ -159,6 +192,40 @@ header{
 
 @media (max-width: 760px){
   header{ padding: 18px 20px; }
-  .hero{ flex-direction:column; padding: 40px 20px; }
-  .video-placeholder{ max-width: 100%; width:100%; }
+  .hero{ padding: 32px 20px 0; }
+  .hero-content{
+    flex-direction:column;
+    gap:24px;
+    padding-bottom:32px;
+    align-items:stretch;
+  }
+  .hero-text h1{
+    font-size:clamp(36px, 10vw, 56px);
+  }
+  .hero-text p{
+    font-size:16px;
+  }
+  .video-block{
+    order:1;
+    width:100%;
+  }
+  .video-placeholder{
+    max-width:100%;
+    width:100%;
+    aspect-ratio:16/9;
+    max-height:50vh;
+  }
+  .cat-medium{
+    white-space:normal !important;
+  }
+  .color-bar{ width:calc(100% + 40px); margin-left:-20px; }
+  .cta-section{ padding:48px 20px 64px; }
+  .cta-btn:active{ background:var(--ink); color:#fff; }
+  .color-swatch:active{ opacity:0.7; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *, *::before, *::after{
+    transition-duration: 0.01ms !important;
+  }
 }
