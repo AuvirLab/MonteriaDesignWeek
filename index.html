@@ -24,158 +24,32 @@
     <div class="hero-text">
       <h1>Montería<span class="thin">Design Week</span></h1>
       <p>Es una iniciativa que nace para impulsar el talento joven de la ciudad, creando un espacio donde el diseño, el arte y la creatividad se convierten en herramientas de encuentro, aprendizaje y proyección.</p>
+      <p class="hero-hint">Explora las categorías seleccionando un <span class="hint-color" id="hintColor">color</span><span class="hint-colons">:</span></p>
     </div>
     <div class="video-block">
       <div class="video-placeholder" id="videoPlaceholder">
-        <video id="heroVideoA" muted playsinline preload="metadata"></video>
-        <video id="heroVideoB" muted playsinline preload="metadata"></video>
+        <video id="heroVideoA" muted playsinline loop preload="metadata"></video>
+        <video id="heroVideoB" muted playsinline loop preload="metadata"></video>
       </div>
     </div>
   </div>
-  <p class="color-bar-label" id="colorBarLabel">Explora las categorías</p>
   <div class="color-bar" id="colorBar"></div>
 </section>
 
 <section class="cta-section">
   <h2>Convocatoria de proyectos</h2>
-  <a href="https://forms.gle/4F2LeT553HeAT9CE7" target="_blank" class="cta-btn">Inscríbete aquí</a>
+  <div class="cta-buttons">
+    <a href="BASES%20DE%20LA%20CONVOCATORIA.pdf" target="_blank" class="cta-btn cta-btn-inverted">Bases de la convocatoria (PDF)</a>
+    <a href="https://forms.gle/VHayogiB79YEDf3Z8" target="_blank" class="cta-btn">Inscríbete aquí</a>
+  </div>
 </section>
 
-<script>
-  const slides = [
-    { bg:"#000000", fg:"#ffffff", video:"assets/videos/video1_web.mp4", logo:"assets/iconos/MDW_PRINCIPAL.png", title:'Montería<span class="thin">Design Week</span>', desc:"Es una iniciativa que nace para impulsar el talento joven de la ciudad, creando un espacio donde el diseño, el arte y la creatividad se convierten en herramientas de encuentro, aprendizaje y proyección." },
-    { bg:"#ffff00", fg:"#000000", video:"assets/videos/video2_web.mp4", logo:"assets/iconos/MDW_ARTES.png", title:'<span class="cat-thin">Categoría</span> <span class="cat-medium">Artes</span>', catSize:"1em", desc:"Las artes visuales, performáticas y plásticas son el pulso creativo de Montería. Esta categoría reúne a artistas, curadores y gestores culturales que transforman espacios, narrativas y comunidades a través de la expresión artística." },
-    { bg:"#6599ff", fg:"#ffffff", video:"assets/videos/video3_web.mp4", logo:"assets/iconos/MDW_DISEÑO_AUDIOVISUAL.png", title:'<span class="cat-thin">Categoría</span> <span class="cat-medium">Diseño Audiovisual</span>', catSize:"0.56em", desc:"El diseño audiovisual combina imagen, sonido y movimiento para contar historias que conectan con las personas. Desde la producción audiovisual hasta la dirección de arte, esta categoría impulsa a los creadores que dan forma a la comunicación visual contemporánea." },
-    { bg:"#34cc67", fg:"#ffffff", video:"assets/videos/video4_web.mp4", logo:"assets/iconos/MDW_DISEÑO_GRAFICO.png", title:'<span class="cat-thin">Categoría</span> <span class="cat-medium">Diseño Gráfico</span>', catSize:"0.66em", desc:"El diseño gráfico es la herramienta que traduce ideas en identidades visuales memorables. En esta categoría se destacan los profesionales que construyen marcas, editorial, señalética y comunicación visual con un enfoque estratégico y creativo." },
-    { bg:"#ff6600", fg:"#ffffff", video:"assets/videos/video5_web.mp4", logo:"assets/iconos/MDW_DISEÑO_INDUSTRIAL.png", title:'<span class="cat-thin">Categoría</span> <span class="cat-medium">Diseño Industrial</span>', catSize:"0.6em", desc:"El diseño industrial piensa en el usuario final y transforma problemas cotidianos en soluciones funcionales y estéticas. Esta categoría abarca el diseño de productos, mobiliario, empaques y prototipos que mejoran la experiencia de vida en la ciudad." },
-    { bg:"#9900cc", fg:"#ffffff", video:"assets/videos/video6_web.mp4", logo:"assets/iconos/MDW_DISEÑO_MODAS.png", title:'<span class="cat-thin">Categoría</span> <span class="cat-medium">Diseño de Modas</span>', catSize:"0.62em", desc:"La moda es expresión, identidad y cultura. Esta categoría celebra a los diseñadores textiles y de vestuario que combinan tradición artesanal con tendencias contemporáneas, creando propuestas que redefinen la estética y el consumo responsable." },
-    { bg:"#fe0000", fg:"#ffffff", video:"assets/videos/video7_web.mp4", logo:"assets/iconos/MDW_ARQUITECTURA.png", title:'<span class="cat-thin">Categoría</span> <span class="cat-medium">Arquitectura</span>', catSize:"0.77em", desc:"La arquitectura define cómo vivimos, nos movemos y convivimos en el espacio. Esta categoría reúne a profesionales que diseñan edificaciones, espacios públicos y paisajismo con visión sostenible, innovadora y arraigada en la realidad local." },
-  ];
+<section class="allies-section">
+  <div class="allies-label" id="alliesLabel">Organiza</div>
+  <div class="allies-logos" id="alliesLogos"></div>
+</section>
 
-  const hero = document.getElementById('hero');
-  const h1El = document.querySelector('.hero-text h1');
-  const pEl = document.querySelector('.hero-text p');
-  const colorBar = document.getElementById('colorBar');
-  const barLabel = document.getElementById('colorBarLabel');
-  const heroVideoA = document.getElementById('heroVideoA');
-  const heroVideoB = document.getElementById('heroVideoB');
-  const logoA = document.getElementById('logoA');
-  const logoB = document.getElementById('logoB');
-
-  let currentIndex = -1;
-  let activeLogo = logoA;
-  let hiddenLogo = logoB;
-  let activeVideo = heroVideoA;
-  let hiddenVideo = heroVideoB;
-  let isTransitioning = false;
-
-  function goToSlide(index){
-    if(index === currentIndex) return;
-    if(isTransitioning) return;
-    const s = slides[index];
-    const isFirst = (currentIndex === -1);
-    currentIndex = index;
-    if(!isFirst) isTransitioning = true;
-
-    hero.style.backgroundColor = s.bg;
-    hero.style.color = s.fg;
-    h1El.innerHTML = s.title;
-    if(s.catSize){
-      var catName = h1El.querySelector('.cat-medium');
-      if(catName) catName.style.fontSize = s.catSize;
-    }
-    pEl.textContent = s.desc;
-    barLabel.style.color = s.fg;
-
-    hiddenLogo.src = s.logo;
-    hiddenLogo.onload = function(){
-      if(isFirst){
-        hiddenLogo.style.transition = 'none';
-        hiddenLogo.classList.remove('logo-hidden');
-        activeLogo.classList.add('logo-hidden');
-        void hiddenLogo.offsetHeight;
-        hiddenLogo.style.transition = '';
-      } else {
-        hiddenLogo.classList.remove('logo-hidden');
-        activeLogo.classList.add('logo-hidden');
-      }
-      const tmp = activeLogo;
-      activeLogo = hiddenLogo;
-      hiddenLogo = tmp;
-    };
-
-    hiddenVideo.src = s.video;
-    hiddenVideo.currentTime = 0;
-    hiddenVideo.oncanplaythrough = function(){
-      hiddenVideo.play().catch(()=>{});
-      if(isFirst){
-        hiddenVideo.style.transition = 'none';
-        hiddenVideo.style.opacity = '1';
-        void hiddenVideo.offsetHeight;
-        hiddenVideo.style.transition = '';
-        const tmp = activeVideo;
-        activeVideo = hiddenVideo;
-        hiddenVideo = tmp;
-        hiddenVideo.style.opacity = '0';
-        activeVideo.addEventListener('timeupdate', handleVideoTimeUpdate);
-      } else {
-        hiddenVideo.style.opacity = '1';
-        activeVideo.style.opacity = '0';
-        setTimeout(function(){
-          activeVideo.pause();
-          const tmp = activeVideo;
-          activeVideo = hiddenVideo;
-          hiddenVideo = tmp;
-          isTransitioning = false;
-          activeVideo.addEventListener('timeupdate', handleVideoTimeUpdate);
-        }, 1000);
-      }
-    };
-
-    var swatches = colorBar.querySelectorAll('.color-swatch');
-    swatches.forEach(function(sw, i){
-      sw.classList.toggle('active', i === index);
-    });
-  }
-
-  slides.forEach(function(s, idx){
-    var swatch = document.createElement('div');
-    swatch.className = 'color-swatch';
-    swatch.style.backgroundColor = s.bg;
-    swatch.addEventListener('click', function(){ goToSlide(idx); });
-    colorBar.appendChild(swatch);
-  });
-
-  goToSlide(0);
-
-  function handleVideoTimeUpdate(){
-    if(this !== activeVideo) return;
-    if(isTransitioning) return;
-    if(this.duration - this.currentTime > 1.5) return;
-
-    this.removeEventListener('timeupdate', handleVideoTimeUpdate);
-
-    hiddenVideo.src = this.currentSrc;
-    hiddenVideo.currentTime = 0;
-    hiddenVideo.oncanplaythrough = function(){
-      hiddenVideo.play().catch(()=>{});
-      isTransitioning = true;
-      hiddenVideo.style.opacity = '1';
-      activeVideo.style.opacity = '0';
-      setTimeout(function(){
-        activeVideo.pause();
-        var tmp = activeVideo;
-        activeVideo = hiddenVideo;
-        hiddenVideo = tmp;
-        isTransitioning = false;
-        activeVideo.addEventListener('timeupdate', handleVideoTimeUpdate);
-      }, 1000);
-    };
-  }
-
-  heroVideoA.addEventListener('timeupdate', handleVideoTimeUpdate);
-  heroVideoB.addEventListener('timeupdate', handleVideoTimeUpdate);
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
