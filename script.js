@@ -96,11 +96,10 @@
   hintColorEl.style.color = hintColors[0];
 
   var alliesGroups = [
-    { label: 'Organiza', logos: ['assets/iconos/alcaldia_monteria.png','assets/iconos/semana_juventud.png','assets/iconos/pmjm.png','assets/iconos/consejo_juventud.png','assets/iconos/auvirlab.png'] },
+    { label: 'Organizan', logos: ['assets/iconos/alcaldia_monteria.png','assets/iconos/semana_juventud.png','assets/iconos/pmjm.png','assets/iconos/consejo_juventud.png','assets/iconos/auvirlab.png'] },
     { label: 'Patrocinador oficial y sede asociada', logos: ['assets/iconos/unisinu.png','assets/iconos/flow.png'] },
-    { label: 'Patrocinadores', logos: ['assets/iconos/caua.png','assets/iconos/fablab.png'] },
-    { label: 'Aliados', logos: ['assets/iconos/chadia.png','assets/iconos/arq_unisinu.png','assets/iconos/cec.png','assets/iconos/san_agustin.png','assets/iconos/upb.png','assets/iconos/unicor.png'] },
-    { label: 'Apoyan', logos: ['assets/iconos/pintando_4_historias.png','assets/iconos/tres_pesos_pesados.png','assets/iconos/the_set_architects.png','assets/iconos/alerta_roja.png'] }
+    { label: 'Aliados institucionales', logos: ['assets/iconos/chadia.png','assets/iconos/arq_unisinu.png','assets/iconos/cec.png','assets/iconos/san_agustin.png','assets/iconos/upb.png','assets/iconos/unicor.png'] },
+    { label: 'Apoyan', logos: ['assets/iconos/cesca.png','assets/iconos/pintando_4_historias.png','assets/iconos/tres_pesos_pesados.png','assets/iconos/caua.png','assets/iconos/fablab.png','assets/iconos/the_set_architects.png','assets/iconos/alerta_roja.png'] }
   ];
 
   var alliesLabel = document.getElementById('alliesLabel');
