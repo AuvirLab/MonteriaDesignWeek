@@ -146,13 +146,13 @@ header{
   overflow:hidden;
   position:relative;
 }
-.video-placeholder video{
+.hero-video{
   width:100%;
   height:100%;
   object-fit:cover;
   position:absolute;
   top:0; left:0;
-  opacity: 0;
+  opacity:0;
 }
 
 /* ---------- COLOR BAR ---------- */
@@ -223,7 +223,7 @@ header{
 /* ---------- ALIADOS ---------- */
 .allies-section{
   text-align:center;
-  padding:64px 24px 64px;
+  padding:64px 24px 32px;
 }
 .allies-label{
   font-size:clamp(28px, 4vw, 44px);
@@ -296,9 +296,56 @@ header{
   .cta-section{ padding:48px 20px 0; }
   .cta-btn:active{ background:var(--ink); color:#fff; }
   .color-swatch:active{ opacity:0.7; }
-  .allies-section{ padding:48px 20px 48px; }
+  .allies-section{ padding:48px 20px 24px; }
   .allies-logos{ gap:28px; flex-wrap:wrap; }
   .allies-logos img{ height:36px; }
+}
+
+/* ---------- INFO CREDIT ---------- */
+.info-credit{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+}
+.info-btn{
+  width:36px;
+  height:36px;
+  border:1.5px solid var(--ink);
+  border-radius:50%;
+  background:transparent;
+  color:var(--ink);
+  font-family:'Futura Medium BT', sans-serif;
+  font-size:18px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background .2s ease, color .2s ease;
+}
+.info-btn:hover{
+  background:var(--ink);
+  color:var(--paper);
+}
+.info-tooltip{
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  margin-bottom:6px;
+  padding:10px 16px;
+  background:var(--ink);
+  color:var(--paper);
+  font-size:13px;
+  white-space:nowrap;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.info-tooltip a{
+  color:inherit;
+  text-decoration:underline;
+}
+.info-tooltip.show{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
 }
 
 @media (prefers-reduced-motion: reduce){

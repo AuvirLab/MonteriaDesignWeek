@@ -28,8 +28,13 @@
     </div>
     <div class="video-block">
       <div class="video-placeholder" id="videoPlaceholder">
-        <video id="heroVideoA" muted playsinline loop preload="metadata"></video>
-        <video id="heroVideoB" muted playsinline loop preload="metadata"></video>
+        <video class="hero-video" data-slide="0" muted playsinline loop preload="auto" src="assets/videos/video1_web.mp4" style="opacity:1"></video>
+        <video class="hero-video" data-slide="1" muted playsinline loop preload="auto" src="assets/videos/video4_web.mp4"></video>
+        <video class="hero-video" data-slide="2" muted playsinline loop preload="auto" src="assets/videos/video7_web.mp4"></video>
+        <video class="hero-video" data-slide="3" muted playsinline loop preload="auto" src="assets/videos/video5_web.mp4"></video>
+        <video class="hero-video" data-slide="4" muted playsinline loop preload="auto" src="assets/videos/video6_web.mp4"></video>
+        <video class="hero-video" data-slide="5" muted playsinline loop preload="auto" src="assets/videos/video2_web.mp4"></video>
+        <video class="hero-video" data-slide="6" muted playsinline loop preload="auto" src="assets/videos/video3_web.mp4"></video>
       </div>
     </div>
   </div>
@@ -47,6 +52,12 @@
 <section class="allies-section">
   <div class="allies-label" id="alliesLabel">Organiza</div>
   <div class="allies-logos" id="alliesLogos"></div>
+  <div class="info-credit">
+    <div id="infoTooltip" class="info-tooltip">
+      Página por <a href="https://jaydenmd24.github.io/" target="_blank" rel="noopener">José Medrano</a>
+    </div>
+    <button id="infoBtn" class="info-btn" aria-label="Información del sitio">i</button>
+  </div>
 </section>
 
 <script src="script.js"></script>
