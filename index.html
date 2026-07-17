@@ -4,19 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Montería Design Week</title>
-<link rel="icon" href="assets/iconos/favicon.png">
+<link rel="icon" href="assets/iconos/favicon.webp">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+<div class="loader" id="loader">
+  <img src="assets/iconos/MDW.gif" alt="Montería Design Week">
+</div>
+
 <header>
   <div class="logo-placeholder">
-    <img id="logoA" src="assets/iconos/MDW_PRINCIPAL.png" alt="Montería Design Week">
-    <img id="logoB" src="assets/iconos/MDW_PRINCIPAL.png" alt="Montería Design Week" class="logo-hidden">
+    <img id="logoA" src="assets/iconos/MDW_PRINCIPAL.webp" alt="Montería Design Week">
+    <img id="logoB" src="assets/iconos/MDW_PRINCIPAL.webp" alt="Montería Design Week" class="logo-hidden">
   </div>
-  <a href="https://www.instagram.com/monteriadesignweek" target="_blank" class="ig-icon">
-    <img src="assets/iconos/instagram.png" alt="Instagram">
-  </a>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/monteriadesignweek" target="_blank" class="social-icon" aria-label="Instagram">
+      <img src="assets/iconos/instagram.webp" alt="Instagram">
+    </a>
+    <a href="https://web.facebook.com/profile.php?id=61592092945906" target="_blank" class="social-icon" aria-label="Facebook">
+      <img src="assets/iconos/facebook.webp" alt="Facebook">
+    </a>
+  </div>
 </header>
 
 <section class="hero" id="hero">
@@ -27,14 +36,14 @@
       <p class="hero-hint">Explora las categorías seleccionando un <span class="hint-color" id="hintColor">color</span><span class="hint-colons">:</span></p>
     </div>
     <div class="video-block">
-      <div class="video-placeholder" id="videoPlaceholder">
-        <video class="hero-video" data-slide="0" muted playsinline loop preload="auto" src="assets/videos/video1_web.mp4" style="opacity:1"></video>
-        <video class="hero-video" data-slide="1" muted playsinline loop preload="auto" src="assets/videos/video4_web.mp4"></video>
-        <video class="hero-video" data-slide="2" muted playsinline loop preload="auto" src="assets/videos/video7_web.mp4"></video>
-        <video class="hero-video" data-slide="3" muted playsinline loop preload="auto" src="assets/videos/video5_web.mp4"></video>
-        <video class="hero-video" data-slide="4" muted playsinline loop preload="auto" src="assets/videos/video6_web.mp4"></video>
-        <video class="hero-video" data-slide="5" muted playsinline loop preload="auto" src="assets/videos/video2_web.mp4"></video>
-        <video class="hero-video" data-slide="6" muted playsinline loop preload="auto" src="assets/videos/video3_web.mp4"></video>
+      <div class="video-placeholder">
+        <video class="hero-video" data-slide="0" muted playsinline loop preload="auto" src="assets/videos/video1_720p.mp4" style="opacity:1"></video>
+        <video class="hero-video" data-slide="1" muted playsinline loop preload="auto" src="assets/videos/video4_720p.mp4"></video>
+        <video class="hero-video" data-slide="2" muted playsinline loop preload="auto" src="assets/videos/video7_720p.mp4"></video>
+        <video class="hero-video" data-slide="3" muted playsinline loop preload="auto" src="assets/videos/video5_720p.mp4"></video>
+        <video class="hero-video" data-slide="4" muted playsinline loop preload="auto" src="assets/videos/video6_720p.mp4"></video>
+        <video class="hero-video" data-slide="5" muted playsinline loop preload="auto" src="assets/videos/video2_720p.mp4"></video>
+        <video class="hero-video" data-slide="6" muted playsinline loop preload="auto" src="assets/videos/video3_720p.mp4"></video>
       </div>
     </div>
   </div>
