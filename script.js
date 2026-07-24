@@ -114,8 +114,6 @@ setInterval(function(){
 
 var alliesGroups = [
   { label: 'Organizan', logos: ['assets/iconos/alcaldia_monteria.webp','assets/iconos/semana_juventud.webp','assets/iconos/pmjm.webp','assets/iconos/consejo_juventud.webp','assets/iconos/auvirlab.webp'] },
-  { label: 'Patrocinador oficial y sede asociada', logos: ['assets/iconos/unisinu.webp','assets/iconos/flow.webp'] },
-  { label: 'Aliados institucionales', logos: ['assets/iconos/chadia.webp','assets/iconos/arq_unisinu.webp','assets/iconos/cec.webp','assets/iconos/san_agustin.webp','assets/iconos/upb.webp','assets/iconos/unicor.webp'] },
   { label: 'Apoyan', logos: ['assets/iconos/cesca.webp','assets/iconos/pintando_4_historias.webp','assets/iconos/tres_pesos_pesados.webp','assets/iconos/caua.webp','assets/iconos/fablab.webp','assets/iconos/the_set_architects.webp','assets/iconos/alerta_roja.webp'] }
 ];
 
